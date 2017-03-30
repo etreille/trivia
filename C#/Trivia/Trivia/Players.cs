@@ -17,6 +17,7 @@ namespace Trivia
         public void Add(Player player)
         {
             ListPlayers.Add(player);
+
             if (Current == null)
             {
                 Current = player;
