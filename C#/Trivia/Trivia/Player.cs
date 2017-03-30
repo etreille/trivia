@@ -2,7 +2,7 @@ using System;
 
 namespace Trivia
 {
-    internal class Player
+    public class Player
     {
         public string Name { get; private set; }
 
@@ -36,6 +36,11 @@ namespace Trivia
         public void GoToPenaltyBox()
         {
             InPenaltyBox = true;
+        }
+
+        public bool IsWinner()
+        {
+            return GoldCoins == 6;
         }
     }
 }

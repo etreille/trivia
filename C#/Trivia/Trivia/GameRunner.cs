@@ -4,17 +4,18 @@ namespace Trivia
 {
     public class GameRunner
     {
-        private static bool notAWinner;
+        private static bool winner;
 
         public static void Main(String[] args)
         {
             for (var i = 0; i < 10; i++)
             {
-                var aGame = new Game();
+                var players = new Players();
+                players.Add("Chet");
+                players.Add("Pat");
+                players.Add("Sue");
 
-                aGame.Add("Chet");
-                aGame.Add("Pat");
-                aGame.Add("Sue");
+                var aGame = new Game(players);
 
                 Random rand = new Random(i);
 
@@ -24,13 +25,13 @@ namespace Trivia
 
                     if (rand.Next(9) == 7)
                     {
-                        notAWinner = aGame.WrongAnswer();
+                        winner = aGame.WrongAnswer();
                     }
                     else
                     {
-                        notAWinner = aGame.WasCorrectlyAnswered();
+                        winner = aGame.WasCorrectlyAnswered();
                     }
-                } while (notAWinner);
+                } while (!winner);
             }
         }
     }
