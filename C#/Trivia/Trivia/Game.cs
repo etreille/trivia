@@ -1,23 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Trivia
 {
     public class Game
     {
-        private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() {{0, "Pop"}, {1, "Science"}, {2, "Sports"}, {3, "Rock"}};
-
         private readonly Players _players;
 
-        Questions questions = new Questions();
-        
-        QuestionsStack _popQuestionsStack = new QuestionsStack("pop");
-        QuestionsStack _scienceQuestionsStack = new QuestionsStack("science");
-        QuestionsStack _sportsQuestionsStack = new QuestionsStack("sports");
-        QuestionsStack _rockQuestionsStack = new QuestionsStack("rock");
+        private readonly Questions _questions = new Questions();
 
-        bool isGettingOutOfPenaltyBox;
+        private bool _isGettingOutOfPenaltyBox;
 
 
         public Game(Players players)
@@ -39,7 +30,7 @@ namespace Trivia
             {
                 if (roll % 2 != 0)
                 {
-                    isGettingOutOfPenaltyBox = true;
+                    _isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(_players.Current.Name + " is getting out of the penalty box");
                     _players.Current.Move(roll);
@@ -47,14 +38,12 @@ namespace Trivia
                     Console.WriteLine(_players.Current.Name
                             + "'s new location is "
                             + _players.Current.Place);
-                    String[] questionsCat = questions.AskQuestion(_players.Current.Place);
-                    Console.WriteLine("The category is " + questionsCat[0]);
-                    Console.WriteLine(questionsCat[1]);
+                    Console.WriteLine(_questions.AskQuestion(_players.Current.Place));
                 }
                 else
                 {
                     Console.WriteLine(_players.Current.Name + " is not getting out of the penalty box");
-                    isGettingOutOfPenaltyBox = false;
+                    _isGettingOutOfPenaltyBox = false;
                 }
 
             }
@@ -65,9 +54,7 @@ namespace Trivia
                 Console.WriteLine(_players.Current.Name
                         + "'s new location is "
                         + _players.Current.Place);
-                String[] questionsCat = questions.AskQuestion(_players.Current.Place);
-                Console.WriteLine("The category is " + questionsCat[0]);
-                Console.WriteLine(questionsCat[1]);
+                Console.WriteLine(_questions.AskQuestion(_players.Current.Place));
             }
 
         }
@@ -77,7 +64,7 @@ namespace Trivia
             bool winner;
             if (_players.Current.InPenaltyBox)
             {
-                if (isGettingOutOfPenaltyBox)
+                if (_isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
                     _players.Current.WinAGoldCoin();

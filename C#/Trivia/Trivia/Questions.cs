@@ -18,13 +18,12 @@ namespace Trivia
 
 
 
-        public string[] AskQuestion(int place)
+        public string AskQuestion(int place)
         {
             QuestionsStack qStack = CurrentCategory(place);
+            Console.WriteLine("The category is "+qStack.category);
 
-            String[] questionCat = new[] {qStack.category,qStack.GetQuestion()};
-
-            return questionCat;
+            return qStack.GetQuestion();
         }
 
 
