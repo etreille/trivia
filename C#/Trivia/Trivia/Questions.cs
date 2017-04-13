@@ -21,7 +21,7 @@ namespace Trivia
         public string AskQuestion(int place)
         {
             QuestionsStack qStack = CurrentCategory(place);
-            Console.WriteLine("The category is "+qStack.category);
+            Console.WriteLine("The category is "+qStack.Category);
 
             return qStack.GetQuestion();
         }
