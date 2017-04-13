@@ -1,28 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace Trivia
 {
     internal class StockQuestions
     {
-        private readonly LinkedList<string> stock = new LinkedList<string>();
+        private readonly LinkedList<string> _stock;
+        private string category { get; }
 
-        public void addQuestion(string question)
+
+        public StockQuestions(string category)
         {
-            stock.AddLast(question);
+            this._stock = new LinkedList<string>();
+            this.category = category;
         }
 
-        public string getQuestion()
+        public void AddQuestion(string question)
         {
-            string question =stock.First();
-            this.removeQuestion();
+            _stock.AddLast(question);
+        }
+
+        public string GetQuestion()
+        {
+            string question = _stock.First();
+            RemoveQuestion();
             return question;
         }
 
-        public void removeQuestion()
+        public void RemoveQuestion()
         {
-            stock.RemoveFirst();
+            _stock.RemoveFirst();
         }
     }
 }
