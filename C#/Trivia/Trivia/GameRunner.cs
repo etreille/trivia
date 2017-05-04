@@ -8,6 +8,7 @@ namespace Trivia
 
         public static void Main(String[] args)
         {
+            IQuestionsRepository questionsRepository = new GeneratedQuestionsRepository();
             for (var i = 0; i < 10; i++)
             {
                 var players = new Players();
@@ -15,7 +16,6 @@ namespace Trivia
                 players.Add("Pat");
                 players.Add("Sue");
 
-                IQuestionsRepository questionsRepository = new GeneratedQuestionsRepository();
 
                 var questions = new Questions(new[] {"Pop", "Science", "Sports", "Rock"},questionsRepository);
 
