@@ -8,16 +8,14 @@ namespace Trivia
     {
         private readonly string _category;
         private readonly LinkedList<string> questions = new LinkedList<string>();
-
-        private IQuestionsRepository questionsRepository;
+        
 
         public QuestionsStack(string category, IQuestionsRepository questionsRepository)
         {
             _category = category;
+            
 
-            this.questionsRepository = questionsRepository;
-
-            questions = this.questionsRepository.GetQuestions(category);
+            questions = questionsRepository.GetQuestions(category);
             
         }
 
