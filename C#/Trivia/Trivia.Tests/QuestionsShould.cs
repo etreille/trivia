@@ -2,6 +2,9 @@
 using System.IO;
 using NFluent;
 using NUnit.Framework;
+using Trivia.DataAccess;
+using Trivia.Domain;
+using Trivia.Presentation;
 
 namespace Trivia.Tests
 {

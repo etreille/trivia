@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Trivia
+namespace Trivia.DataAccess
 {
     public class GeneratedQuestionsRepository : IQuestionsRepository
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Trivia
+namespace Trivia.Domain
 {
     public interface IQuestionsRepository
     {

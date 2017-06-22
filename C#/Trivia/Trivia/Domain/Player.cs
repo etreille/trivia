@@ -1,4 +1,4 @@
-namespace Trivia
+namespace Trivia.Domain
 {
     public class Player
     {

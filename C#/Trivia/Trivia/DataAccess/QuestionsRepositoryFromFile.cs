@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Trivia
+namespace Trivia.DataAccess
 {
     class QuestionsRepositoryFromFile : IQuestionsRepository
     {
