@@ -4,23 +4,23 @@ namespace Trivia
 {
     public class GameRunner
     {
-        private static bool winner;
+        private static bool _winner;
 
         public static void Main(String[] args)
         {
-            IQuestionUI _questionUi = new ConsoleUI();
+            IQuestionUI questionUi = new ConsoleUI();
             IQuestionsRepository questionsRepository = new GeneratedQuestionsRepository();
             for (var i = 0; i < 10; i++)
             {
-                var players = new Players(_questionUi);
+                var players = new Players(questionUi);
                 players.Add("Chet");
                 players.Add("Pat");
                 players.Add("Sue");
 
 
-                var questions = new Questions(new[] {"Pop", "Science", "Sports", "Rock"},questionsRepository, _questionUi);
+                var questions = new Questions(new[] {"Pop", "Science", "Sports", "Rock"},questionsRepository, questionUi);
 
-                var aGame = new Game(players, questions, _questionUi);
+                var aGame = new Game(players, questions, questionUi);
 
                 Random rand = new Random(i);
 
@@ -30,13 +30,13 @@ namespace Trivia
 
                     if (rand.Next(9) == 7)
                     {
-                        winner = aGame.WrongAnswer();
+                        _winner = aGame.WrongAnswer();
                     }
                     else
                     {
-                        winner = aGame.WasCorrectlyAnswered();
+                        _winner = aGame.WasCorrectlyAnswered();
                     }
-                } while (!winner);
+                } while (!_winner);
             }
         }
     }
