@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Trivia.Domain;
 
 namespace Trivia.DataAccess
 {

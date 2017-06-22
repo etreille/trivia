@@ -9,6 +9,8 @@
 
         private readonly IQuestionUI _questionUi;
 
+        //private IDispatchEvent _eventDispatcher;
+
         bool _isGettingOutOfPenaltyBox;
 
 
@@ -21,6 +23,7 @@
 
         public void Roll(int roll)
         {
+            //_eventDispatcher.Dispatch(new CurrentPlayerRolledTheDice(_players.Current.Name, roll));
             _questionUi.Display(_players.Current.Name + " is the current player");
             _questionUi.Display("They have rolled a " + roll);
 
