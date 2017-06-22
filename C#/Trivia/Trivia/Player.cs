@@ -12,8 +12,11 @@ namespace Trivia
 
         public bool InPenaltyBox { get; set; }
 
-        public Player(string name)
+        private readonly IQuestionUI _questionUi;
+
+        public Player(string name, IQuestionUI questionUi)
         {
+            _questionUi = questionUi;
             Name = name;
             Place = 0;
             GoldCoins = 0;
@@ -30,7 +33,7 @@ namespace Trivia
         public void WinAGoldCoin()
         {
             GoldCoins++;
-            Console.WriteLine(Name + " now has " + GoldCoins + " Gold Coins.");
+            _questionUi.Display(Name + " now has " + GoldCoins + " Gold Coins.");
         }
 
         public void GoToPenaltyBox()

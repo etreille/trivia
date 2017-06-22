@@ -8,18 +8,19 @@ namespace Trivia
 
         public static void Main(String[] args)
         {
+            IQuestionUI _questionUi = new ConsoleUI();
             IQuestionsRepository questionsRepository = new GeneratedQuestionsRepository();
             for (var i = 0; i < 10; i++)
             {
-                var players = new Players();
+                var players = new Players(_questionUi);
                 players.Add("Chet");
                 players.Add("Pat");
                 players.Add("Sue");
 
 
-                var questions = new Questions(new[] {"Pop", "Science", "Sports", "Rock"},questionsRepository);
+                var questions = new Questions(new[] {"Pop", "Science", "Sports", "Rock"},questionsRepository, _questionUi);
 
-                var aGame = new Game(players, questions);
+                var aGame = new Game(players, questions, _questionUi);
 
                 Random rand = new Random(i);
 

@@ -16,8 +16,9 @@ namespace Trivia.Tests
             Console.SetOut(stringWriter);
             const string category5 = "Category5";
             IQuestionsRepository questionsRepository = new GeneratedQuestionsRepository();
+            IQuestionUI questionUi = new ConsoleUI();
 
-            var questions = new Questions(new []{ "Category1", "Category2", "Category3", "Category4", category5 }, questionsRepository);
+            var questions = new Questions(new []{ "Category1", "Category2", "Category3", "Category4", category5 }, questionsRepository, questionUi);
 
             // Act
             questions.AskQuestion(4);
